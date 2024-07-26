@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <!--Cabecalho-->
+    <header>
+        <ul id="nome">
+            <li>Eduardo Araújo Valadares Silva</li>
+            <li>Matrícula - 814939</li>
+        </ul>
+        <div id="titulo">Ecommerce Website</div>
+        <ul id="curso">
+            <li>Ciencias da Computacão</li>
+            <li>PUC Minas</li>
+        </ul>
+    </header>
+    <hr>
+    <!--Conteúdo principal - card dos produtos-->
+    <main>
+        <div>
+            <div class="inputGroup" id="input-search">
+                <input type="text" autocomplete="off" placeholder="Search" onkeyup="handleSearch(event)" />
+            </div>
+            <div class="container-fluid" id="tela"></div>
+        </div>
+    </main>
+
+    <script>
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                const pesquisa = event.target.value;
+                const url = `https://fakestoreapi.com/products?category=mens%20clothing`;
+
+                fetch(url)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        console.log("Imprimindo produtos");
+                        let filteredData = data.filter((produto) => {
+                            const titleMatch = produto.title.toLowerCase().includes(pesquisa.toLowerCase());
+                            const descriptionMatch = produto.description.toLowerCase().includes(pesquisa.toLowerCase());
+                            const categoryMatch = produto.category.toLowerCase().includes(pesquisa.toLowerCase());
+                            return titleMatch || descriptionMatch || categoryMatch;
+                        });
+
+                        let str = "";
+                        for (let i = 0; i < data.length; i++) {
+                            let produto = data[i];
+                            if (filteredData.includes(produto)) {
+                                str += `<div class="card">
+                                            <img id="img" src="${produto.image}" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">${produto.title}</h5>
+                                                <p id="price">$${produto.price}</p>
+                                                <p id="rating">Rate: ${produto.rating.rate}</p>
+                                                <button id="detalhes" onclick="redirecionarParaDetalhes(${produto.id})">details</button>
+                                            </div>
+                                        </div>`;
+                            }
+                        }
+                        document.getElementById("tela").innerHTML = str;
+                    });
+            }
+        }
+    </script>
+</body>
+</html>

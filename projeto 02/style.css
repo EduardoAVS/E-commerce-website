@@ -1,0 +1,170 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+ul {
+  list-style-type: none;
+}
+/*ajustando o header*/
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(88, 42, 173);
+  font-weight: 550;
+  padding-right: 3rem;
+  text-align: center;
+}
+header #titulo {
+  font-size: 1.5rem;
+}
+/*css para HOME*/
+#tela {
+  justify-content: center;
+  align-items: center;
+}
+/*css para os cards */
+.container-fluid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 17rem;
+  height: 25rem;
+  background: #ffffff;
+  border: 0.063rem solid rgb(88, 42, 173);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.card img {
+  width: 45%; /* Defina a largura desejada para as imagens */
+  height: 35%;
+}
+.card-body {
+  text-align: center;
+  padding: 0.1rem;
+  margin: 0.1rem;
+}
+#price {
+  display: flex;
+  flex-direction: column;
+  padding: 0.1rem;
+  margin: 0.5rem;
+}
+
+#rating {
+  display: flex;
+  flex-direction: column;
+  padding: 0.1rem;
+  margin: 0.5rem;
+}
+
+/*código css para os butttons*/
+button {
+  margin: 0.25rem;
+  padding: 0.6rem 1.2rem;
+  border: 0.001rem solid rgb(88, 42, 173);
+  border-radius: 1rem;
+  color: #e8e8e8;
+  z-index: 1;
+  background: #4a12ab;
+  position: relative;
+  font-weight: 750;
+  font-size: 0.75rem;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #ffffff;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+button:hover {
+  color: #4a12ab;
+}
+
+button:hover::before {
+  width: 100%;
+}
+
+/*código css para o input*/
+input {
+  width: 20rem;
+  margin: 2rem auto;
+  text-align: center;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border-color: rgba(56, 23, 166);
+}
+
+/*css para a pag-detalhes*/
+.pag-detalhes{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  
+}
+.pag-detalhes img{
+  max-width: 30rem;
+  max-height: 30rem;
+}
+.pag-detalhes #conteudo{
+  padding-top: 1rem;;
+  max-width: 40rem;
+}
+.pag-detalhes #title{
+  font-size: 1.3rem; 
+}
+.pag-detalhes #price{
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: rgb(189, 1, 1);
+}
+@media (max-width: 590px) {
+  /* Estilos CSS para telas menores que 590px */
+  header {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(88, 42, 173);
+    font-weight: 540;
+    text-align: center;
+    margin-top: 0;
+  }
+  input {
+    width: 15rem;
+    margin: 2rem auto;
+    text-align: center;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border-color: rgba(56, 23, 166);
+  }
+}

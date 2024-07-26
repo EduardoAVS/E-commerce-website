@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>detalhes</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+  <!--Cabecalho-->
+  <header>
+    <ul id="nome">
+      <li>Eduardo Araújo Valadares Silva</li>
+      <li>Matrícula - 814939</li>
+    </ul>
+    <div id="titulo">Ecommerce Website</div>
+    <ul id="curso">
+      <li>Ciencias da Computacão</li>
+      <li>PUC Minas</li>
+    </ul>
+  </header>
+  <hr />
+  <!--conteúdo-->
+  <div id="detalhes" class="pag-detalhes"></div>
+  <script>
+    // Verificar se o ID do produto está presente na URL e carregar detalhes se estiver
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get("id");
+
+    if (productId) {
+      fetch(`https://fakestoreapi.com/products/${productId}`)
+        .then((res) => res.json())
+        .then((produto) => {
+          console.log("Imprimindo detalhes do produto");
+          let detalhesElement = document.getElementById("detalhes");
+          detalhesElement.innerHTML = `
+            <img id="img" src="${produto.image}" />
+            <div id="conteudo">
+              <h5 id="title">${produto.title}</h5>
+              <p id="category">${produto.category}</p>
+              <p>Sobre o produto:</p>
+              <p id="description">${produto.description}</p>
+              <p id="price">$${produto.price}</p>
+              <p id="rating">Rate: ${produto.rating.rate}</p>
+              <p id="quantidade">Count: ${produto.rating.count}</p>
+              <a href="index.html">
+                <button id="btn-home">home</button>
+              </a>
+            </div>
+          `;
+        });
+    }
+  </script>
+</body>
+</html>
+
